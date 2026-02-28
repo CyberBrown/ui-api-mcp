@@ -20,22 +20,7 @@ app.get('/', (c) => {
   });
 });
 
-// Bearer token auth middleware for /mcp
-app.use('/mcp', async (c, next) => {
-  const authHeader = c.req.header('Authorization');
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return c.json({ error: 'Missing or invalid Authorization header' }, 401);
-  }
-
-  const token = authHeader.slice(7);
-  if (token !== c.env.BEARER_TOKEN) {
-    return c.json({ error: 'Invalid bearer token' }, 403);
-  }
-
-  await next();
-});
-
-// MCP endpoint
+// MCP endpoint - auth via passphrase in tool arguments (same pattern as Nexus)
 app.all('/mcp', async (c) => {
   const handler = createUiMcpHandler(c.env);
   return handler(c.req.raw, c.env, c.executionCtx);
