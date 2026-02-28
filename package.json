@@ -1,0 +1,30 @@
+{
+  "name": "ui-api-mcp",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bunx wrangler dev",
+    "deploy": "bunx wrangler deploy",
+    "secret:list": "bunx wrangler secret list",
+    "secret:put": "bunx wrangler secret put"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251202.0",
+    "@types/bun": "latest",
+    "wrangler": "^4.54.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.23.0",
+    "agents": "^0.2.32",
+    "ai": "^6.0.105",
+    "hono": "^4.10.7",
+    "zod": "^4.1.13"
+  },
+  "overrides": {
+    "@modelcontextprotocol/sdk": "1.23.0"
+  }
+}
